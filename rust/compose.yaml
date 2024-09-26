@@ -1,0 +1,22 @@
+services:
+    dev:
+        build:
+            context: .
+            args:
+                - WORKDIR=${WORKDIR}
+                - USER=${USER}
+            network: host
+        tty: true
+        stdin_open: true
+        network_mode: host
+        volumes:
+            - dfs:${WORKDIR}
+        devices:
+            - /dev/kfd
+            - /dev/dri
+        security_opt:
+            - seccomp=unconfined
+
+volumes:
+    dfs:
+        external: true
