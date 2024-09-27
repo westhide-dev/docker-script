@@ -2,6 +2,7 @@
 
 FROM ubuntu:24.04
 
+ARG SHELL
 ARG WORKDIR
 ARG DK_USER
 
@@ -19,6 +20,7 @@ COPY entrypoint.sh /entrypoint.sh
 
 RUN /init.sh
 
+ENV SHELL ${SHELL}
 ENV LANG en_US.utf8
 
 ENTRYPOINT ["/entrypoint.sh"]

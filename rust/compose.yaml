@@ -3,6 +3,7 @@ services:
         build:
             context: .
             args:
+                - SHELL=${SHELL}
                 - WORKDIR=${WORKDIR}
                 - DK_USER=${DK_USER}
             network: host
