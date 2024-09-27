@@ -3,16 +3,16 @@
 FROM ubuntu:24.04
 
 ARG WORKDIR
-ARG USER
+ARG DK_USER
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt install -y sudo tzdata
 
-RUN useradd -rmU ${USER} -G sudo
+RUN useradd -rmU ${DK_USER} -G sudo
 RUN sed -i 's|%sudo.ALL=(ALL:ALL).ALL|%sudo ALL=(ALL:ALL) NOPASSWD: ALL|' /etc/sudoers
 
 WORKDIR ${WORKDIR}
-USER ${USER}
+USER ${DK_USER}
 
 COPY init.sh /init.sh
 COPY entrypoint.sh /entrypoint.sh
