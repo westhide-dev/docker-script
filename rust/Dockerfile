@@ -1,6 +1,7 @@
 # syntax=docker/dockerfile:1
 
 FROM ubuntu:24.04
+SHELL ["/bin/bash", "-c"]
 
 ARG SHELL
 ARG WORKDIR
